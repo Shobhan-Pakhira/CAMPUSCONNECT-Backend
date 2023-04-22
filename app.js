@@ -49,6 +49,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+
+app.get('/', (req, res) => {
+  return res.status(201).json({alive:true, working:true})
+})
+
 app.use(function (req, res, next) {
   console.log(`REQUEST [${req.url}] {${req.path}}: `);
   console.log(req.body);
